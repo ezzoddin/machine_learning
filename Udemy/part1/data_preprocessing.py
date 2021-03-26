@@ -7,3 +7,9 @@ X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 print(X)
 print(y)
+
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+imputer.fit(X[:, 1:3])
+X[:, 1:3] = imputer.transform(X[:, 1:3])
+print(X)
